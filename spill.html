@@ -64,8 +64,8 @@ int main()
 
     <div class="container">
         <pre>
-<code class="language-c">#include &lt;stdlib.hh&gt;
-#include &lt;time.hh&gt;
+<code class="language-c">#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
 
 int main()
 {
@@ -102,7 +102,7 @@ int main()
 <code class="language-c">   int score = 0;
     while (!WindowShouldClose())
     {
-        if (enemyX == 400 && playerPos < enemyY | enemyX == 400 && playerPos > enemyY + 200)
+        if (enemyX == 200 && playerPos < enemyY || enemyX == 200 && playerPos > enemyY + 200)
         {
             score = 0;
             enemyY = rand() % (400 - 50 + 1);
