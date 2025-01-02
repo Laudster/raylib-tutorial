@@ -15,8 +15,8 @@
     <div class="container">
         <pre>
 <code class="language-c">#include "raylib.h"
-#include &lt;stdlib.h.hh&gt;
-#include &lt;time.h.hh&gt;
+#include &lt;stdlib.h.&gt;
+#include &lt;time.h.&gt;
 
 int main()
 {
@@ -46,7 +46,7 @@ int main()
             enemyX = 1300;
         }
 
-        if (enemyX == 400 && playerPos < enemyY | enemyX == 400 && playerPos > enemyY + 200)
+        if (enemyX == 200 && playerPos < enemyY || enemyX == 200 && playerPos > enemyY + 200)
         {
             score = 0;
             enemyY = rand() % (400 - 50 + 1);
