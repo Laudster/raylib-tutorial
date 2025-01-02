@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <title>Spill</title>
+</head>
+<body>
+    <h1> Slutt spill </h1>
+
+    <h3> Nå mot slutten skal vi lage et lite spill. Det er en flappybird-clone som er ganske basic, men som du selv kan lett gjøre om til noe større. </h3>
+
+    <h3> Først av alt lager vi et vindu. </h3>
+    
+    <div class="container">
+        <pre>
+<code class="language-c">#include "raylib.h"
+
+int main()
+{
+    InitWindow(1200, 800, "game");
+    SetWindowState(FLAG_WINDOW_UNDECORATED);
+    SetTargetFPS(60);
+    while (!WindowShouldClose())
+    {
+        BeginDrawing();
+            ClearBackground(RAYWHITE);
+        EndDrawing();
+    }
+
+    CloseWindow();
+
+    return 0;
+}</code>
+    </pre>
+    </div>
+
+    <h3> FLAG_WINDOW_UNDECORATED er lagt til kun for estetiske grunner og gjør at du må trykke escape for å lukke spillet. </h3>
+
+    <h3> Det neste vil være å legge til en spill avatar. </h3>
+
+    <div class="container">
+        <pre>
+<code class="language-c">   int playerPos = 400;
+
+    while (!WindowShouldClose())
+    {
+        if (IsKeyDown(KEY_SPACE)) playerPos -= 10;
+        
+        playerPos += 5;
+
+        BeginDrawing();
+            ClearBackground(RAYWHITE);
+            DrawCircle(200, playerPos, 30, BLUE);
+        EndDrawing();</code>
+</pre>
+</div>
+
+    <h3> Så trenger spillet da motstandere, eller hinderne. </h3>
+
+    <div class="container">
+        <pre>
+<code class="language-c">#include &lt;stdlib.hh&gt;
+#include &lt;time.hh&gt;
+
+int main()
+{
+    srand(time(NULL));
+
+    int enemyX = 1300;
+    int enemyY = rand() % (700 - 100 + 1);
+
+    while (!WindowShouldClose())
+    {
+        enemyX -= 5;
+
+        if (enemyX < -50)
+        {
+            enemyY = rand() % (400 - 50 + 1);
+            enemyX = 1300;
+        }
+
+        BeginDrawing();
+            ClearBackground(RAYWHITE);
+            DrawRectangle(enemyX, 0, 50, enemyY, BLACK);
+            DrawRectangle(enemyX, enemyY + 200, 50, 800, BLACK);
+        EndDrawing();
+</code>
+</pre>
+</div>
+
+    <h3> Hinderne spawner et tilfeldig sted og for å få til det trengte vi de to nye modulene. Hvordan det fungerer kan du lese om <a target="_blank" href="https://www.geeksforgeeks.org/generating-random-number-range-c/">her</a>. </h3>
+
+    <h3> Og nå kan vi legge til score og død. </h3>
+
+    <div class="container">
+        <pre>
+<code class="language-c">   int score = 0;
+    while (!WindowShouldClose())
+    {
+        if (enemyX == 400 && playerPos < enemyY | enemyX == 400 && playerPos > enemyY + 200)
+        {
+            score = 0;
+            enemyY = rand() % (400 - 50 + 1);
+            enemyX = 1300;
+        }
+
+        if (enemyX == 200) score++;
+
+        BeginDrawing();
+            ClearBackground(RAYWHITE);
+            DrawText(TextFormat("%i", score), 500, 200, 300, YELLOW);
+        EndDrawing();
+    </code>
+    </pre>
+    </div>
+
+    <h3> Og da var programmet ferdig. </h3>
+
+    <h3> Om det var noe som gikk feil ligger hele programmet <a href="fult-program.html" target="_blank">her</a>. </h3>
+
+    <button> <a href="program1.html"> Tilbake </a> </button>
+    <button> <a href="videre.html"> Videre </a> </button>
+</body>
+</html>

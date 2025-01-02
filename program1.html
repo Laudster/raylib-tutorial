@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <title>Program 1</title>
+</head>
+<body>
+    <h1> Første Program </h1>
+
+    <h3> For å lage et prosjekt for visual studio code kan du bare kopiere prosjektet innenfor C:\raylib\raylib\projects kalt VSCODE. Du kan plassere det hvor som helst og det bør fungere ved å presse f5. </h3>
+
+    <h3> Prosjektet du finner innenfor der er imidlertid i 3d, men i begynnelsen vil jeg anbefale å bare forholde deg til 2d. Så her er et lett eksempel for 2d. </h3>
+
+    <div class="container">
+        <pre>
+<code class="language-c">#include "raylib.h"
+
+int main()
+{
+    InitWindow(1200, 800, "game");
+    SetTargetFPS(60);
+
+    while (!WindowShouldClose())
+    {
+        BeginDrawing();
+            ClearBackground(RAYWHITE);
+            DrawText("Raylib fungerer", 220, 300, 100, BLACK);
+        EndDrawing();
+    }
+    CloseWindow();
+    return 0;
+}
+            </code>
+        </pre>
+    </div>
+
+    <button> <a href="install.html"> Tilbake </a> </button>
+    <button> <a href="spill.html"> Slutt spill </a> </button>
+</body>
+</html>
